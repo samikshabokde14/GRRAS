@@ -1,0 +1,21 @@
+pipeline {
+           agent any
+         stage {
+            stage( checkout ){
+               steps{
+                     git 'https://github.com/samikshabokde14/GRRAS.git'
+                    }
+               }
+         stage( build ){
+               steps{ 
+                       sh 'mvn install'
+                     }
+              }
+         stage( deployment ){
+                steps{
+                       sh 'cp target/GRRAS.war /home/samiksha/Downloads/apache-tomcat-9.0.93/webapps'
+                     }
+                  }
+                } 
+             }
+                  
